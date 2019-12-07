@@ -18,7 +18,6 @@ namespace FundacjaBT.EventTool
         {
             AllowAutoRedirect = false
         });
-        private string token;
 
         public Uri Address { get; set; } = new Uri("http://localhost/");
 
@@ -32,6 +31,11 @@ namespace FundacjaBT.EventTool
                 Assembly.GetExecutingAssembly().GetName().Version.Major,
                 Assembly.GetExecutingAssembly().GetName().Version.Minor
                 ));
+        }
+
+        ~ApiClient()
+        {
+            Disconnect().Wait();
         }
         
         public async Task Connect(NetworkCredential credential)
@@ -53,7 +57,20 @@ namespace FundacjaBT.EventTool
             {
                 throw new HttpRequestException(response.ReasonPhrase);
             }
-            token = await response.Content.ReadAsStringAsync();
+            client.DefaultRequestHeaders.Add(
+                "X-AUTH-TOKEN",
+                await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task Disconnect()
+        {
+            var response = await client.GetAsync(Address + "logout");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+            client.DefaultRequestHeaders.Remove("X-AUTH-TOKEN");
         }
     }
 }
