@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FundacjaBT.EventTool
 {
-    public class API
+    public class ApiClient
     {
         private readonly HttpClient client = new HttpClient(new HttpClientHandler()
         {
@@ -22,7 +22,7 @@ namespace FundacjaBT.EventTool
 
         public Uri Address { get; set; } = new Uri("http://localhost/");
 
-        public API()
+        public ApiClient()
         {
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
