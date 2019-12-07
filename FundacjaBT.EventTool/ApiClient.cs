@@ -74,6 +74,20 @@ namespace FundacjaBT.EventTool
             client.DefaultRequestHeaders.Remove("X-AUTH-TOKEN");
         }
 
+        public async Task<Event> GetEventAsync()
+        {
+            var serializer = new DataContractJsonSerializer(
+               typeof(Event));
+            var response = await client.GetAsync(Address + "api/event");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+            return serializer.ReadObject(
+                await response.Content.ReadAsStreamAsync()) as Event;
+        }
+
         public async Task<List<Ticket>> GetAllTicketsAsync()
         {
             var serializer = new DataContractJsonSerializer(
