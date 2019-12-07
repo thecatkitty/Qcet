@@ -3,7 +3,7 @@
 namespace FundacjaBT.EventTool
 {
     [DataContract]
-    class Role
+    public class Role
     {
         [DataMember(Name = "name")]
         public string Name;

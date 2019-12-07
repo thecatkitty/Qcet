@@ -14,7 +14,8 @@ namespace FundacjaBT.EventTool
 {
     public class ApiClient
     {
-        private readonly HttpClient client = new HttpClient(new HttpClientHandler()
+        private readonly HttpClient client = new HttpClient(
+            new HttpClientHandler()
         {
             AllowAutoRedirect = false
         });
@@ -71,6 +72,20 @@ namespace FundacjaBT.EventTool
                 throw new HttpRequestException(response.ReasonPhrase);
             }
             client.DefaultRequestHeaders.Remove("X-AUTH-TOKEN");
+        }
+
+        public async Task<List<Ticket>> GetAllTicketsAsync()
+        {
+            var serializer = new DataContractJsonSerializer(
+                typeof(List<Ticket>));
+            var response = await client.GetAsync(Address + "list");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+            return serializer.ReadObject(
+                await response.Content.ReadAsStreamAsync()) as List<Ticket>;
         }
     }
 }

@@ -3,7 +3,7 @@
 namespace FundacjaBT.EventTool
 {
     [DataContract]
-    class Ticket
+    public class Ticket
     {
         [DataMember(Name = "id")]
         public int Id;
