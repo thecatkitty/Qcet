@@ -101,5 +101,17 @@ namespace FundacjaBT.EventTool
             return serializer.ReadObject(
                 await response.Content.ReadAsStreamAsync()) as List<Ticket>;
         }
+
+        public async Task ValidateTicketAsync(Ticket ticket)
+        {
+            var serializer = new DataContractJsonSerializer(
+                typeof(List<Ticket>));
+            var response = await client.GetAsync(Address + $"list/{ticket.Id}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+        }
     }
 }

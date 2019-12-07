@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace FundacjaBT.EventTool
 {
@@ -28,5 +29,10 @@ namespace FundacjaBT.EventTool
 
         [DataMember(Name = "isValidated")]
         public bool Validated;
+
+        public async Task Validate(ApiClient api)
+        {
+            await api.ValidateTicketAsync(this);
+        }
     }
 }
