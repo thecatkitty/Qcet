@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29509.3
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qcet.UWP", "Qcet.UWP\Qcet.UWP.csproj", "{40397610-A4D2-4ABE-99F1-C0F59685E3DB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Qcet", "Qcet\Qcet.csproj", "{5A6DC019-A46D-41F3-9A7C-634465E3EDF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qcet.WPF", "Qcet.WPF\Qcet.WPF.csproj", "{6727D6D0-8C88-4005-A104-6B669705D2AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundacjaBT.EventTool", "FundacjaBT.EventTool\FundacjaBT.EventTool.csproj", "{71AEDE44-4180-46C7-BB03-0E88E7122AA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,22 @@ Global
 		{6727D6D0-8C88-4005-A104-6B669705D2AB}.Release|x64.Build.0 = Release|Any CPU
 		{6727D6D0-8C88-4005-A104-6B669705D2AB}.Release|x86.ActiveCfg = Release|Any CPU
 		{6727D6D0-8C88-4005-A104-6B669705D2AB}.Release|x86.Build.0 = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|x64.Build.0 = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Debug|x86.Build.0 = Debug|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|ARM.Build.0 = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|x64.ActiveCfg = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|x64.Build.0 = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|x86.ActiveCfg = Release|Any CPU
+		{71AEDE44-4180-46C7-BB03-0E88E7122AA1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
