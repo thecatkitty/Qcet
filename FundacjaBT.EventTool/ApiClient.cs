@@ -87,5 +87,19 @@ namespace FundacjaBT.EventTool
             return serializer.ReadObject(
                 await response.Content.ReadAsStreamAsync()) as List<Ticket>;
         }
+
+        public async Task<List<Ticket>> GetTicketsAsync(string phrase)
+        {
+            var serializer = new DataContractJsonSerializer(
+                typeof(List<Ticket>));
+            var response = await client.GetAsync(Address + $"list/{phrase}");
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException(response.ReasonPhrase);
+            }
+            return serializer.ReadObject(
+                await response.Content.ReadAsStreamAsync()) as List<Ticket>;
+        }
     }
 }
