@@ -14,14 +14,18 @@ namespace Qcet.WPF
             InitializeComponent();
 
             Forms.Init();
+            Qcet.Platform.Provider = new PlatformProvider();
             LoadApplication(new Qcet.App());
         }
 
         protected override void OnActivated(EventArgs e)
         {
             base.OnActivated(e);
-            var topbar = this.Template.FindName("PART_TopAppBar", this) as Xamarin.Forms.Platform.WPF.Controls.FormsAppBar;
-            if (topbar != null) topbar.MaxHeight = 0;
+            var topBar = Template.FindName("PART_TopAppBar", this) as Xamarin.Forms.Platform.WPF.Controls.FormsAppBar;
+            if (topBar != null)
+            {
+                topBar.MaxHeight = 0;
+            }
         }
     }
 }
