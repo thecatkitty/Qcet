@@ -65,7 +65,7 @@ namespace FundacjaBT.EventTool
 
         public async Task Disconnect()
         {
-            var response = await client.GetAsync(Address + "logout");
+            var response = await client.GetAsync(Address + "api/logout");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -78,7 +78,7 @@ namespace FundacjaBT.EventTool
         {
             var serializer = new DataContractJsonSerializer(
                 typeof(List<Ticket>));
-            var response = await client.GetAsync(Address + "list");
+            var response = await client.GetAsync(Address + "api/list");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -92,7 +92,7 @@ namespace FundacjaBT.EventTool
         {
             var serializer = new DataContractJsonSerializer(
                 typeof(List<Ticket>));
-            var response = await client.GetAsync(Address + $"list/{phrase}");
+            var response = await client.GetAsync(Address + $"api/list/{phrase}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -106,7 +106,7 @@ namespace FundacjaBT.EventTool
         {
             var serializer = new DataContractJsonSerializer(
                 typeof(List<Ticket>));
-            var response = await client.GetAsync(Address + $"list/{ticket.Id}");
+            var response = await client.GetAsync(Address + $"api/list/{ticket.Id}");
 
             if (!response.IsSuccessStatusCode)
             {
