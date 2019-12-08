@@ -10,7 +10,12 @@ namespace Qcet
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BackgroundColor = Color.Black,
+                BarBackgroundColor = Color.FromHex("#702F8A"),
+                BarTextColor = Color.White
+            };
         }
 
         protected override void OnStart()

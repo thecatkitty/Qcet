@@ -22,5 +22,10 @@ namespace Qcet
         {
             Settings.UrlBase = (sender as Entry).Text;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new TicketSearchView()).Wait();
+        }
     }
 }

@@ -6,9 +6,11 @@
              xmlns:xme="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              xmlns:q="clr-namespace:Qcet"
              mc:Ignorable="d"
-             x:Class="Qcet.MainPage">
+             x:Class="Qcet.MainPage"
+             Title="Main page"
+             NavigationPage.HasNavigationBar="False">
 
-    <StackLayout BackgroundColor="Black">
+    <StackLayout>
         <!-- Place new controls here -->
         <Label
             Text="Welcome to Qcet!" 
@@ -18,26 +20,25 @@
             FontAttributes="Bold"/>
         <Label
             Text="{Binding Source={x:Static q:Platform.Manufacturer}}" 
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            TextColor="White"/>
+            Style="{StaticResource LabelStyle}"/>
         <Label
             Text="{Binding Source={x:Static q:Platform.Model}}" 
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            TextColor="White"/>
+            Style="{StaticResource LabelStyle}"/>
         <Label
             Text="{Binding Source={x:Static q:Platform.Version}}" 
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            TextColor="White"/>
+            Style="{StaticResource LabelStyle}"/>
         <Entry
             Text="{Binding Source={x:Static q:Settings.UrlBase}}"
-            HorizontalOptions="Center"
+            Style="{StaticResource LabelStyle}"
             WidthRequest="200"
-            VerticalOptions="CenterAndExpand"
             BackgroundColor="White"
+            TextColor="Black"
             Unfocused="Entry_Unfocused"/>
+        <Button
+            Text="Search..."
+            Style="{StaticResource ButtonStyle}"
+            WidthRequest="200"
+            Clicked="Button_Clicked"/>
     </StackLayout>
 
 </ContentPage>
