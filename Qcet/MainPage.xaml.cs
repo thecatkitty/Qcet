@@ -17,5 +17,10 @@ namespace Qcet
         {
             InitializeComponent();
         }
+
+        private void Entry_Unfocused(object sender, FocusEventArgs e)
+        {
+            Settings.UrlBase = (sender as Entry).Text;
+        }
     }
 }

@@ -10,23 +10,34 @@
 
     <StackLayout BackgroundColor="Black">
         <!-- Place new controls here -->
-        <Label Text="Welcome to Qcet!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"
-           TextColor="White"
-           FontAttributes="Bold"/>
-        <Label Text="{Binding Source={x:Static q:Platform.Manufacturer}}" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"
-           TextColor="White"/>
-        <Label Text="{Binding Source={x:Static q:Platform.Model}}" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"
-           TextColor="White"/>
-        <Label Text="{Binding Source={x:Static q:Platform.Version}}" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"
-           TextColor="White"/>
+        <Label
+            Text="Welcome to Qcet!" 
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            TextColor="White"
+            FontAttributes="Bold"/>
+        <Label
+            Text="{Binding Source={x:Static q:Platform.Manufacturer}}" 
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            TextColor="White"/>
+        <Label
+            Text="{Binding Source={x:Static q:Platform.Model}}" 
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            TextColor="White"/>
+        <Label
+            Text="{Binding Source={x:Static q:Platform.Version}}" 
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand"
+            TextColor="White"/>
+        <Entry
+            Text="{Binding Source={x:Static q:Settings.UrlBase}}"
+            HorizontalOptions="Center"
+            WidthRequest="200"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="White"
+            Unfocused="Entry_Unfocused"/>
     </StackLayout>
 
 </ContentPage>
