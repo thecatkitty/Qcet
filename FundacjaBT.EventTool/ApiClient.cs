@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -14,6 +13,8 @@ namespace FundacjaBT.EventTool
 {
     public class ApiClient
     {
+        private const string XAuthToken = "X-AUTH-TOKEN";
+
         private readonly HttpClient client = new HttpClient(
             new HttpClientHandler()
         {
@@ -21,6 +22,10 @@ namespace FundacjaBT.EventTool
         });
 
         public Uri Address { get; set; } = new Uri("http://localhost/");
+
+        public bool IsConnected {
+            get => client.DefaultRequestHeaders.Contains(XAuthToken);
+        }
 
         public ApiClient()
         {
@@ -32,11 +37,6 @@ namespace FundacjaBT.EventTool
                 Assembly.GetExecutingAssembly().GetName().Version.Major,
                 Assembly.GetExecutingAssembly().GetName().Version.Minor
                 ));
-        }
-
-        ~ApiClient()
-        {
-            Disconnect().Wait();
         }
         
         public async Task Connect(NetworkCredential credential)
@@ -56,10 +56,15 @@ namespace FundacjaBT.EventTool
 
             if (!response.IsSuccessStatusCode)
             {
+                if (response.StatusCode == HttpStatusCode.Found
+                    || response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new AuthenticationException(response.ReasonPhrase);
+                }
                 throw new HttpRequestException(response.ReasonPhrase);
             }
             client.DefaultRequestHeaders.Add(
-                "X-AUTH-TOKEN",
+                XAuthToken,
                 await response.Content.ReadAsStringAsync());
         }
 
