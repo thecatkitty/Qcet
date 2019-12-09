@@ -30,7 +30,7 @@ namespace Qcet
             layout.Padding = new Thickness(width / 10);
         }
 
-        private void Entry_Unfocused(object sender, FocusEventArgs e)
+        private void UrlBase_Unfocused(object sender, FocusEventArgs e)
         {
             Settings.UrlBase = (sender as Entry).Text;
         }
@@ -69,6 +69,7 @@ namespace Qcet
 
                 await connection;
                 connection.Wait();
+                Settings.UserName = userNameEntry.Text;
                 await Navigation.PopModalAsync();
             }
             catch (AuthenticationException)

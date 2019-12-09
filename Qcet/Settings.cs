@@ -1,17 +1,17 @@
-﻿using Xamarin.Forms;
-
-namespace Qcet
+﻿namespace Qcet
 {
-    public static class Settings
+    public static partial class Settings
     {
         public static string UrlBase
         {
-            get => Application.Current.Properties.ContainsKey("UrlBase")
-                ? Application.Current.Properties["UrlBase"] as string
-                : "http://localhost:8000/";
-            set => Application.Current.Properties["UrlBase"] = value;
+            get => GetFromStorage("http://localhost:8000/");
+            set => SetInStorage(value);
         }
 
-        public static string UserName { get; set; }
+        public static string UserName
+        {
+            get => GetFromStorage<string>(null);
+            set => SetInStorage(value);
+        }
     }
 }

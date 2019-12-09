@@ -20,7 +20,7 @@
                 Text="{Binding Source={x:Static q:Settings.UrlBase}}"
                 Placeholder="event-tool server URL"
                 Style="{StaticResource EntryStyle}"
-                Unfocused="Entry_Unfocused"/>
+                Unfocused="UrlBase_Unfocused"/>
             <Entry
                 x:Name="userNameEntry"
                 Text="{Binding Source={x:Static q:Settings.UserName}}"
