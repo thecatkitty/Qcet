@@ -11,5 +11,7 @@ namespace Qcet
                 : "http://localhost:8000/";
             set => Application.Current.Properties["UrlBase"] = value;
         }
+
+        public static string UserName { get; set; }
     }
 }

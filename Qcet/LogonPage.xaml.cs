@@ -14,14 +14,14 @@ namespace Qcet
         {
             InitializeComponent();
 
-            loginEntry.Completed += (s, e) => passwordEntry.Focus();
+            userNameEntry.Completed += (s, e) => passwordEntry.Focus();
             passwordEntry.Completed += (s, e) => loginButton_Clicked(s, e);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            loginEntry.Focus();
+            userNameEntry.Focus();
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -62,7 +62,7 @@ namespace Qcet
                 statusLabel.Text = $"Connecting to {app.Api.Address.DnsSafeHost}...";
                 var connection = app.Api.Connect(new System.Net.NetworkCredential
                 {
-                    UserName = loginEntry.Text,
+                    UserName = userNameEntry.Text,
                     Password = passwordEntry.Text,
                     Domain = app.Api.Address.DnsSafeHost
                 });
@@ -74,7 +74,7 @@ namespace Qcet
             catch (AuthenticationException)
             {
                 statusLabel.TextColor = Color.Red;
-                statusLabel.Text = "Invalid login or password!";
+                statusLabel.Text = "Invalid user name or password!";
             }
             catch (HttpRequestException htreqex)
             {
@@ -95,7 +95,7 @@ namespace Qcet
             App app = Application.Current as App;
             loginButton.IsEnabled =
                 !(app.Api?.IsConnected ?? false)
-                && ((loginEntry.Text?.Length ?? 0) > 0)
+                && ((userNameEntry.Text?.Length ?? 0) > 0)
                 && ((passwordEntry.Text?.Length ?? 0) > 0);
         }
     }

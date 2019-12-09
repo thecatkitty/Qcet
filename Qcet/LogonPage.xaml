@@ -22,8 +22,9 @@
                 Style="{StaticResource EntryStyle}"
                 Unfocused="Entry_Unfocused"/>
             <Entry
-                x:Name="loginEntry"
-                Placeholder="Login"
+                x:Name="userNameEntry"
+                Text="{Binding Source={x:Static q:Settings.UserName}}"
+                Placeholder="User name"
                 Style="{StaticResource EntryStyle}"
                 TextChanged="Entry_TextChanged"/>
             <Entry
