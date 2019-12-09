@@ -57,7 +57,7 @@ namespace FundacjaBT.EventTool
             if (!response.IsSuccessStatusCode)
             {
                 if (response.StatusCode == HttpStatusCode.Found
-                    || response.StatusCode == HttpStatusCode.Unauthorized)
+                    || response.StatusCode == HttpStatusCode.Forbidden)
                 {
                     throw new AuthenticationException(response.ReasonPhrase);
                 }
