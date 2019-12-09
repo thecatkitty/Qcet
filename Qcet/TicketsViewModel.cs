@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace Qcet
 {
-    public class TicketSearchViewModel : BaseViewModel
+    public class TicketsViewModel : BaseViewModel
     {
         public ObservableCollection<Ticket> Tickets { get; set; }
 
-        public TicketSearchViewModel()
+        public TicketsViewModel()
         {
             Tickets = new ObservableCollection<Ticket>();
         }

@@ -16,10 +16,10 @@
             Style="{StaticResource CenterLabelStyle}"
             FontAttributes="Bold"/>
         <Button
-            Text="Search..."
+            Text="Show all tickets"
             Style="{StaticResource ButtonStyle}"
             WidthRequest="200"
-            Clicked="Button_Clicked"/>
+            Clicked="ShowAll_Clicked"/>
     </StackLayout>
 
 </ContentPage>

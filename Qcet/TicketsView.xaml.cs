@@ -10,15 +10,15 @@ using Xamarin.Forms.Xaml;
 namespace Qcet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TicketSearchView : ContentPage
+    public partial class TicketsView : ContentPage
     {
-        public TicketSearchViewModel ticketSearchViewModel;
+        public TicketsViewModel ticketSearchViewModel;
 
-        public TicketSearchView()
+        public TicketsView()
         {
             InitializeComponent();
 
-            ticketSearchViewModel = new TicketSearchViewModel();
+            ticketSearchViewModel = new TicketsViewModel();
             BindingContext = ticketSearchViewModel;
         }
 

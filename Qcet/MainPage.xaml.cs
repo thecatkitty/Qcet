@@ -25,9 +25,9 @@ namespace Qcet
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void ShowAll_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TicketSearchView());
+            Navigation.PushAsync(new TicketsView());
         }
     }
 }
