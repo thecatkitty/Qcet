@@ -118,8 +118,6 @@ namespace FundacjaBT.EventTool
 
         public async Task ValidateTicketAsync(Ticket ticket)
         {
-            var serializer = new DataContractJsonSerializer(
-                typeof(List<Ticket>));
             var response = await client.GetAsync(Address + $"api/list/{ticket.Id}");
 
             if (!response.IsSuccessStatusCode)

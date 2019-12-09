@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace FundacjaBT.EventTool
@@ -7,32 +9,48 @@ namespace FundacjaBT.EventTool
     public class Ticket
     {
         [DataMember(Name = "id")]
-        public int Id;
+        public int Id { get; set; }
 
         [DataMember(Name = "email")]
-        public string EmailAddress;
+        public string EmailAddress { get; set; }
 
         [DataMember(Name = "ticketType")]
-        public TicketType Type;
+        public TicketType Type { get; set; }
 
         [DataMember(Name = "ticketNames")]
-        public TicketName[] Names;
+        public TicketName[] Names { get; set; }
 
         [DataMember(Name = "ticketBadges")]
-        public TicketBadge[] Badges;
+        public TicketBadge[] Badges { get; set; }
 
         [DataMember(Name = "price")]
-        public int Price;
+        public int Price { get; set; }
 
         [DataMember(Name = "isValid")]
-        public bool Valid;
+        public bool Valid { get; set; } = false;
 
         [DataMember(Name = "isValidated")]
-        public bool Validated;
+        public bool Validated { get; set; } = false;
 
         public async Task Validate(ApiClient api)
         {
             await api.ValidateTicketAsync(this);
         }
+
+        [IgnoreDataMember]
+        public TicketName PrincipalName => Names.FirstOrDefault();
+
+        [IgnoreDataMember]
+        public TicketBadge PrincipalBadge => Badges.FirstOrDefault();
+
+        [IgnoreDataMember]
+        public string DisplayName =>
+            (PrincipalBadge.Nickname?.Length ?? 0) > 0
+            ? PrincipalBadge.Nickname
+            : PrincipalName?.FullName ?? "<Unknown>";
+
+        [IgnoreDataMember]
+        public string FormattedPrice =>
+            string.Format("{0:C}", Convert.ToDecimal(Price) / 100);
     }
 }

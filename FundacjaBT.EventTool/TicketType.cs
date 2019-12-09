@@ -6,21 +6,21 @@ namespace FundacjaBT.EventTool
     public class TicketType
     {
         [DataMember(Name = "id")]
-        public int Id;
+        public int Id { get; set; }
 
         [DataMember(Name = "name")]
-        public string Name;
+        public string Name { get; set; }
 
         [DataMember(Name = "description")]
-        public string Description;
+        public string Description { get; set; }
 
         [DataMember(Name = "defaultRole")]
-        public Role DefaultRole;
+        public Role DefaultRole { get; set; }
 
         [DataMember(Name = "price")]
-        public int Price;
+        public int Price { get; set; }
 
         [DataMember(Name = "color")]
-        public string HtmlColor;
+        public string HtmlColor { get; set; }
     }
 }

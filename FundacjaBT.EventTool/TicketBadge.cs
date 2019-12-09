@@ -6,15 +6,15 @@ namespace FundacjaBT.EventTool
     public class TicketBadge
     {
         [DataMember(Name = "ticket")]
-        public int Number;
+        public int Number { get; set; }
 
         [DataMember(Name = "nickname")]
-        public string Nickname;
+        public string Nickname { get; set; }
 
         [DataMember(Name = "city")]
-        public string City;
+        public string City { get; set; }
 
         [DataMember(Name = "file")]
-        public string File;
+        public string File { get; set; }
     }
 }
