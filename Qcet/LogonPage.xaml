@@ -36,7 +36,8 @@
                 BackgroundColor="White"
                 TextColor="Black"
                 IsPassword="True"
-                TextChanged="Entry_TextChanged"/>
+                TextChanged="Entry_TextChanged"
+                Focused="passwordEntry_Focused"/>
             <Button
                 x:Name="loginButton"
                 Text="Log in"

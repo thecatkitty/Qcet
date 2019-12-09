@@ -13,11 +13,24 @@ namespace Qcet
         public LogonPage()
         {
             InitializeComponent();
+
+            loginEntry.Completed += (s, e) => passwordEntry.Focus();
+            passwordEntry.Completed += (s, e) => loginButton_Clicked(s, e);
         }
 
         private void Entry_Unfocused(object sender, FocusEventArgs e)
         {
             Settings.UrlBase = (sender as Entry).Text;
+        }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetButtonState();
+        }
+
+        private void passwordEntry_Focused(object sender, FocusEventArgs e)
+        {
+            passwordEntry.Text = "";
         }
 
         async void loginButton_Clicked(object sender, EventArgs e)
@@ -62,11 +75,6 @@ namespace Qcet
             }
 
             indicator.IsRunning = false;
-            SetButtonState();
-        }
-
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
             SetButtonState();
         }
 
