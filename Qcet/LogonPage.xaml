@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:q="clr-namespace:Qcet"
+             mc:Ignorable="d"
+             x:Class="Qcet.LogonPage"
+             Title="Log on"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Text="Please log on into Your event-tool server." 
+                Style="{StaticResource CenterLabelStyle}"/>
+            <Entry
+                Text="{Binding Source={x:Static q:Settings.UrlBase}}"
+                Style="{StaticResource CenterLabelStyle}"
+                WidthRequest="200"
+                BackgroundColor="White"
+                TextColor="Black"
+                Unfocused="Entry_Unfocused"/>
+            <Entry
+                x:Name="loginEntry"
+                Placeholder="Login"
+                Style="{StaticResource CenterLabelStyle}"
+                WidthRequest="200"
+                BackgroundColor="White"
+                TextColor="Black"
+                TextChanged="Entry_TextChanged"/>
+            <Entry
+                x:Name="passwordEntry"
+                Placeholder="Password"
+                Style="{StaticResource CenterLabelStyle}"
+                WidthRequest="200"
+                BackgroundColor="White"
+                TextColor="Black"
+                IsPassword="True"
+                TextChanged="Entry_TextChanged"/>
+            <Button
+                x:Name="loginButton"
+                Text="Log in"
+                Style="{StaticResource ButtonStyle}"
+                IsEnabled="False"
+                WidthRequest="200"
+                Clicked="loginButton_Clicked"/>
+            <ActivityIndicator
+                x:Name="indicator"/>
+            <Label
+                x:Name="statusLabel"
+                Style="{StaticResource CenterLabelStyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

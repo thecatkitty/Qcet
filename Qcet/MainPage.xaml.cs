@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Qcet
@@ -18,14 +14,20 @@ namespace Qcet
             InitializeComponent();
         }
 
-        private void Entry_Unfocused(object sender, FocusEventArgs e)
+        protected override void OnAppearing()
         {
-            Settings.UrlBase = (sender as Entry).Text;
+            base.OnAppearing();
+
+            App app = Application.Current as App;
+            if (!app.Api?.IsConnected ?? true)
+            {
+                Navigation.PushModalAsync(new LogonPage());
+            }
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new TicketSearchView()).Wait();
+            Navigation.PushAsync(new TicketSearchView());
         }
     }
 }

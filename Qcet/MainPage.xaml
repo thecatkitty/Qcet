@@ -3,37 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:xme="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
              xmlns:q="clr-namespace:Qcet"
              mc:Ignorable="d"
              x:Class="Qcet.MainPage"
              Title="Main page"
+             BackgroundColor="Black"
              NavigationPage.HasNavigationBar="False">
 
     <StackLayout>
-        <!-- Place new controls here -->
         <Label
             Text="Welcome to Qcet!" 
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            TextColor="White"
+            Style="{StaticResource CenterLabelStyle}"
             FontAttributes="Bold"/>
-        <Label
-            Text="{Binding Source={x:Static q:Platform.Manufacturer}}" 
-            Style="{StaticResource LabelStyle}"/>
-        <Label
-            Text="{Binding Source={x:Static q:Platform.Model}}" 
-            Style="{StaticResource LabelStyle}"/>
-        <Label
-            Text="{Binding Source={x:Static q:Platform.Version}}" 
-            Style="{StaticResource LabelStyle}"/>
-        <Entry
-            Text="{Binding Source={x:Static q:Settings.UrlBase}}"
-            Style="{StaticResource LabelStyle}"
-            WidthRequest="200"
-            BackgroundColor="White"
-            TextColor="Black"
-            Unfocused="Entry_Unfocused"/>
         <Button
             Text="Search..."
             Style="{StaticResource ButtonStyle}"

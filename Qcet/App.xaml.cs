@@ -6,6 +6,8 @@ namespace Qcet
 {
     public partial class App : Application
     {
+        public FundacjaBT.EventTool.ApiClient Api { get; set; }
+
         public App()
         {
             InitializeComponent();
