@@ -18,6 +18,18 @@ namespace Qcet
             passwordEntry.Completed += (s, e) => loginButton_Clicked(s, e);
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            loginEntry.Focus();
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            layout.Padding = new Thickness(width / 10);
+        }
+
         private void Entry_Unfocused(object sender, FocusEventArgs e)
         {
             Settings.UrlBase = (sender as Entry).Text;

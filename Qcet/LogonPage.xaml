@@ -9,32 +9,27 @@
              Title="Log on"
              BackgroundColor="Black">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            x:Name="layout"
+            Margin="0,5,0,5"
+            Padding="5">
             <Label
                 Text="Please log on into Your event-tool server." 
                 Style="{StaticResource CenterLabelStyle}"/>
             <Entry
                 Text="{Binding Source={x:Static q:Settings.UrlBase}}"
-                Style="{StaticResource CenterLabelStyle}"
-                WidthRequest="200"
-                BackgroundColor="White"
-                TextColor="Black"
+                Placeholder="event-tool server URL"
+                Style="{StaticResource EntryStyle}"
                 Unfocused="Entry_Unfocused"/>
             <Entry
                 x:Name="loginEntry"
                 Placeholder="Login"
-                Style="{StaticResource CenterLabelStyle}"
-                WidthRequest="200"
-                BackgroundColor="White"
-                TextColor="Black"
+                Style="{StaticResource EntryStyle}"
                 TextChanged="Entry_TextChanged"/>
             <Entry
                 x:Name="passwordEntry"
                 Placeholder="Password"
-                Style="{StaticResource CenterLabelStyle}"
-                WidthRequest="200"
-                BackgroundColor="White"
-                TextColor="Black"
+                Style="{StaticResource EntryStyle}"
                 IsPassword="True"
                 TextChanged="Entry_TextChanged"
                 Focused="passwordEntry_Focused"/>
