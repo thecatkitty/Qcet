@@ -27,10 +27,13 @@ namespace FundacjaBT.EventTool
         public int Price { get; set; }
 
         [DataMember(Name = "isValid")]
-        public bool Valid { get; set; } = false;
+        public bool IsValid { get; set; } = false;
 
         [DataMember(Name = "isValidated")]
-        public bool Validated { get; set; } = false;
+        public bool IsValidated { get; set; } = false;
+
+        [DataMember(Name = "code")]
+        public string Code { get; set; }
 
         public async Task Validate(ApiClient api)
         {
