@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace Qcet
+﻿namespace Qcet
 {
     public static partial class Settings
     {
@@ -14,11 +12,6 @@ namespace Qcet
         {
             get => GetFromStorage<string>(null);
             set => SetInStorage(value);
-        }
-
-        public static string MonospaceFont
-        {
-            get => Device.OnPlatform("Courier", "Droid Sans Mono", "Courier New");
         }
     }
 }

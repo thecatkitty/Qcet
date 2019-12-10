@@ -12,17 +12,17 @@ namespace Qcet
         public MainPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
 
             App app = Application.Current as App;
             if (!app.Api?.IsConnected ?? true)
             {
                 Navigation.PushModalAsync(new LogonPage());
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private void ShowAll_Clicked(object sender, EventArgs e)

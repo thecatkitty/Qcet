@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:quic="clr-namespace:Qcet.UIConverters"
              mc:Ignorable="d"
              x:Class="Qcet.App">
 
@@ -64,6 +65,64 @@
                 Property="VerticalOptions"
                 Value="CenterAndExpand" />
         </Style>
-        
+
+        <quic:BooleanToColorConverter
+            x:Key="BCConverter"/>
+
+        <DataTemplate
+            x:Key="TicketListItemTemplate">
+            <ViewCell>
+                <Grid
+                    Margin="0,5,0,5"
+                    BackgroundColor="{Binding Type.HtmlColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Text="{Binding Code}"
+                        TextColor="{Binding IsValidated, Converter={StaticResource BCConverter}}"
+                        FontSize="Large"
+                        Margin="10,0,10,0"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="Courier"/>
+                                    <On Platform="Android" Value="monospace"/>
+                                    <On Platform="UWP" Value="Consolas"/>
+                                    <On Platform="WPF" Value="Consolas"/>
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    Text="{Binding DisplayName}"
+                                    FontAttributes="Bold"/>
+                                <Span Text=" " />
+                                <Span
+                                    Text="{Binding PrincipalName.FullName}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label
+                        Grid.Column="2"
+                        Text="$"
+                        TextColor="{Binding IsValid, Converter={StaticResource BCConverter}}"
+                        FontAttributes="Bold"
+                        Margin="10,0,10,0"
+                        VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </ViewCell>
+        </DataTemplate>
+
     </Application.Resources>
 </Application>
