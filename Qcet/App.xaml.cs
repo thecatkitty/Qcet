@@ -12,7 +12,7 @@ namespace Qcet
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage())
+            MainPage = new NavigationPage(new Views.MainView())
             {
                 BackgroundColor = Color.Black,
                 BarBackgroundColor = Color.FromHex("#702F8A"),

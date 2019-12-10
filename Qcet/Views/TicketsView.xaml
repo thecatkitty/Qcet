@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:q="clr-namespace:Qcet"
     mc:Ignorable="d"
-    x:Class="Qcet.TicketsView"
+    x:Class="Qcet.Views.TicketsView"
     Title="List all tickets"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="True">

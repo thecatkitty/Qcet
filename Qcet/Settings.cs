@@ -1,17 +1,17 @@
 ﻿namespace Qcet
 {
-    public static partial class Settings
+    public static class Settings
     {
         public static string UrlBase
         {
-            get => GetFromStorage("http://localhost:8000/");
-            set => SetInStorage(value);
+            get => Helpers.SettingsStorage.Get("http://localhost:8000/");
+            set => Helpers.SettingsStorage.Set(value);
         }
 
         public static string UserName
         {
-            get => GetFromStorage<string>(null);
-            set => SetInStorage(value);
+            get => Helpers.SettingsStorage.Get<string>(null);
+            set => Helpers.SettingsStorage.Set(value);
         }
     }
 }

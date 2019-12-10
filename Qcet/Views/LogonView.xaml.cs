@@ -5,12 +5,12 @@ using System.Security.Authentication;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Qcet
+namespace Qcet.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LogonPage : ContentPage
+    public partial class LogonView : ContentPage
     {
-        public LogonPage()
+        public LogonView()
         {
             InitializeComponent();
 

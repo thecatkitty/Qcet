@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Qcet
+namespace Qcet.ViewModels
 {
     public class TicketsViewModel : BaseViewModel
     {

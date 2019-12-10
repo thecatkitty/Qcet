@@ -1,6 +1,6 @@
 ﻿using Xamarin.Essentials;
 
-namespace Qcet
+namespace Qcet.Helpers
 {
     public class PlatformProvider
     {

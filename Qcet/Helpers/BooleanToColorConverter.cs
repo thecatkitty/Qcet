@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace Qcet.UIConverters
+namespace Qcet.Helpers
 {
     public class BooleanToColorConverter : IValueConverter
     {
@@ -14,18 +14,6 @@ namespace Qcet.UIConverters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return (Color)value == Color.Green;
-        }
-    }
-    public class BooleanToSymbolConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (bool)value ? "✔" : "❌";
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return (string)value == "✔";
         }
     }
 }

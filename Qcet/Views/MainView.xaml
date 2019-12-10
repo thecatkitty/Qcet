@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:q="clr-namespace:Qcet"
              mc:Ignorable="d"
-             x:Class="Qcet.MainPage"
+             x:Class="Qcet.Views.MainView"
              Title="Main page"
              BackgroundColor="Black"
              NavigationPage.HasNavigationBar="False">

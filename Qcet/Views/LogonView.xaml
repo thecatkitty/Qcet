@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:q="clr-namespace:Qcet"
              mc:Ignorable="d"
-             x:Class="Qcet.LogonPage"
+             x:Class="Qcet.Views.LogonView"
              Title="Log on"
              BackgroundColor="Black"
              NavigationPage.HasBackButton="False">

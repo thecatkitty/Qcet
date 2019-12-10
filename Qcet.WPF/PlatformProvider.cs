@@ -3,7 +3,7 @@ using Xamarin.Essentials;
 
 namespace Qcet.WPF
 {
-    class PlatformProvider : Qcet.PlatformProvider
+    class PlatformProvider : Helpers.PlatformProvider
     {
         override public string Version
         {

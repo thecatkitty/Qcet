@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Qcet
+namespace Qcet.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

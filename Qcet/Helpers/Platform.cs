@@ -1,4 +1,4 @@
-﻿namespace Qcet
+﻿namespace Qcet.Helpers
 {
     public static class Platform
     {

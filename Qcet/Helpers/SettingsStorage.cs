@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace Qcet
+namespace Qcet.Helpers
 {
-    public static partial class Settings
+    public static class SettingsStorage
     {
-        private static T GetFromStorage<T>(T defaultValue)
+        public static T Get<T>(T defaultValue)
         {
             var callerName = (new StackTrace()).GetFrame(1).GetMethod().Name;
             if (!callerName.StartsWith("get_"))
@@ -19,7 +19,7 @@ namespace Qcet
                 ? (T)Application.Current.Properties[key] : defaultValue;
         }
 
-        private static void SetInStorage<T>(T value)
+        public static void Set<T>(T value)
         {
             var callerName = (new StackTrace()).GetFrame(1).GetMethod().Name;
             if (!callerName.StartsWith("set_"))

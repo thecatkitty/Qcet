@@ -14,7 +14,7 @@ namespace Qcet.WPF
             InitializeComponent();
 
             Forms.Init();
-            Qcet.Platform.Provider = new PlatformProvider();
+            Helpers.Platform.Provider = new PlatformProvider();
             LoadApplication(new Qcet.App());
         }
     }

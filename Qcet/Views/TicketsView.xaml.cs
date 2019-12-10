@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using Qcet.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Qcet
+namespace Qcet.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TicketsView : ContentPage

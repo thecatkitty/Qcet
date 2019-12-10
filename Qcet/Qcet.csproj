@@ -15,16 +15,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TicketsView.xaml.cs">
+    <Compile Update="Views\LogonView.xaml.cs">
+      <DependentUpon>LogonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TicketsView.xaml.cs">
       <DependentUpon>TicketsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LogonPage.xaml">
+    <EmbeddedResource Update="Views\LogonView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TicketsView.xaml">
+    <EmbeddedResource Update="Views\TicketsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
