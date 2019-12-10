@@ -3,41 +3,103 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:q="clr-namespace:Qcet"
+             xmlns:quic="clr-namespace:Qcet.UIConverters"
              mc:Ignorable="d"
              x:Class="Qcet.TicketsView"
              Title="List all tickets"
              BackgroundColor="Black"
              NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <quic:BooleanToColorConverter x:Key="booleanToColorConverter"/>
+            <quic:BooleanToSymbolConverter x:Key="booleanToSymbolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ListView 
         ItemsSource="{Binding Tickets}"
         ItemTapped="Handle_ItemTapped"
         CachingStrategy="RetainElement"
         Margin="10">
 
+        <ListView.Header>
+            <StackLayout>
+                <ActivityIndicator
+                    x:Name="indicator"/>
+                <Label
+                    x:Name="statusLabel"
+                    Style="{StaticResource CenterLabelStyle}"/>
+            </StackLayout>
+        </ListView.Header>
+
+        <ListView.Footer>
+            <Label
+                Text="{Binding Tickets.Count, StringFormat='Found {0} ticket(s) in the database'}"
+                Style="{StaticResource CenterLabelStyle}"/>
+        </ListView.Footer>
+
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout
+                    <Grid
                         Margin="0,5,0,5"
-                        Padding="5"
+                        Padding="10"
                         BackgroundColor="{Binding Type.HtmlColor}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
                         <Label
+                            Text="{Binding Code}"
+                            Grid.RowSpan="2"
+                            TextColor="Black"
+                            FontSize="Large"
+                            FontFamily="{Binding Source={x:Static q:Settings.MonospaceFont}}"
+                            Margin="10,0,10,0"
+                            VerticalOptions="CenterAndExpand"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
                             TextColor="Black">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span
                                         Text="{Binding DisplayName}"
                                         FontAttributes="Bold"/>
-                                    <Span Text=" ("/>
+                                    <Span Text=" " />
                                     <Span
                                         Text="{Binding PrincipalName.FullName}"/>
-                                    <Span Text="), city: "/>
-                                    <Span
-                                        Text="{Binding PrincipalBadge.City}"/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                    </StackLayout>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding PrincipalBadge.City}"
+                            TextColor="Black"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Text="$"
+                            TextColor="{Binding IsValid, Converter={StaticResource booleanToColorConverter}}"
+                            FontAttributes="Bold"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Text="{Binding IsValidated, Converter={StaticResource booleanToSymbolConverter}}"
+                            TextColor="{Binding IsValidated, Converter={StaticResource booleanToColorConverter}}"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+                    </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
