@@ -16,21 +16,36 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
         <zxf:ZXingScannerView
             x:Name="scanner"
+            Grid.ColumnSpan="2"
             Grid.RowSpan="3"
             IsScanning="True"
             OnScanResult="scanner_OnScanResult"/>
 
         <ActivityIndicator
             x:Name="indicator"
-            Grid.Row="1"/>
+            Grid.Row="1"
+            Grid.ColumnSpan="2"/>
+
+        <Entry
+            x:Name="codeEntry"
+            Grid.Row="2"
+            Placeholder="Manual code"
+            Style="{StaticResource EntryStyle}"
+            HorizontalTextAlignment="Center"/>
 
         <Button
+            Grid.Column="1"
             Grid.Row="2"
-            Text="Enter manually"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="CenterAndExpand"
+            Text="Enter"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="FillAndExpand"
             Clicked="manual_Clicked"/>
     </Grid>
 </ContentPage>

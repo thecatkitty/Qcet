@@ -38,6 +38,7 @@ namespace Qcet.Views
             };
             scanner.OnScanResult += scanner_OnScanResult;
             grid.Children.Insert(0, scanner);
+            Grid.SetColumnSpan(scanner, 2);
             Grid.SetRowSpan(scanner, 3);
         }
 
@@ -49,12 +50,9 @@ namespace Qcet.Views
 
         private async void manual_Clicked(object sender, EventArgs e)
         {
-            string code = await DisplayPromptAsync(
-                "Ticket check",
-                "Enter the ticket number");
-            if (code != null && code != "")
+            if ((codeEntry?.Text ?? "") != "")
             {
-                await ShowTicketAsync(code);
+                await ShowTicketAsync(codeEntry.Text);
             }
         }
 
