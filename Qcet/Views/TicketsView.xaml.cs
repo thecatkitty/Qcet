@@ -53,5 +53,10 @@ namespace Qcet.Views
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
+
+        private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ticketSearchViewModel.FilterTickets(e.NewTextValue);
+        }
     }
 }

@@ -12,6 +12,14 @@
     NavigationPage.HasNavigationBar="True">
     <StackLayout>
 
+        <Entry
+            x:Name="searchEntry"
+            Placeholder="Search..."
+            Style="{StaticResource EntryStyle}"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,0,0,5"
+            TextChanged="searchEntry_TextChanged"/>
+
         <ActivityIndicator
             x:Name="indicator"/>
         
