@@ -123,7 +123,7 @@ namespace FundacjaBT.EventTool
 
         public async Task ValidateTicketAsync(Ticket ticket)
         {
-            var response = await client.GetAsync(Address + $"api/list/{ticket.Id}");
+            var response = await client.GetAsync(Address + $"api/validate/{ticket.Id}");
 
             if (!response.IsSuccessStatusCode)
             {
