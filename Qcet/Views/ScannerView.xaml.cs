@@ -1,42 +1,103 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace Qcet.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ScannerView : ZXing.Net.Mobile.Forms.ZXingScannerPage
+    public partial class ScannerView : ContentPage
     {
         public ScannerView()
         {
             InitializeComponent();
         }
 
-        private void ZXingScannerPage_OnScanResult(ZXing.Result result)
+        private void RecreateScanner()
         {
-            Device.BeginInvokeOnMainThread(async () => await InterpretResultAsync(result));
+            if (scanner != null)
+            {
+                scanner.IsTorchOn = false;
+                scanner.IsAnalyzing = false;
+                scanner.IsScanning = false;
+                scanner.IsVisible = false;
+                scanner.OnScanResult -= scanner_OnScanResult;
+                grid.Children.Remove(scanner);
+                scanner = null;
+            }
+
+            scanner = new ZXingScannerView
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                IsScanning = true,
+                IsAnalyzing = true
+            };
+            scanner.OnScanResult += scanner_OnScanResult;
+            grid.Children.Insert(0, scanner);
+            Grid.SetRowSpan(scanner, 3);
         }
 
-        private async Task InterpretResultAsync(ZXing.Result result)
+        private void scanner_OnScanResult(ZXing.Result result)
         {
-            IsScanning = false;
 
+            Device.BeginInvokeOnMainThread(async () => await InterpretScanResultAsync(result));
+        }
+
+        private async void manual_Clicked(object sender, EventArgs e)
+        {
+            string code = await DisplayPromptAsync(
+                "Ticket check",
+                "Enter the ticket number");
+            if (code != null && code != "")
+            {
+                await ShowTicketAsync(code);
+            }
+        }
+
+        private async Task InterpretScanResultAsync(ZXing.Result result)
+        {
+            scanner.IsScanning = false;
             if (result.BarcodeFormat == ZXing.BarcodeFormat.QR_CODE)
             {
                 Match match = Regex.Match(result.Text, @"^[a-zA-Z0-9]+-(?<code>[0-9a-f]+)$");
                 if (match.Success)
                 {
-                    App app = Application.Current as App;
 
-                    var ret = await app.Api.GetTicketsAsync(match.Groups["code"].Value);
-                    await Navigation.PushAsync(new TicketView(ret[0]));
+                    indicator.IsRunning = true;
+                    await ShowTicketAsync(match.Groups["code"].Value);
+                    indicator.IsRunning = false;
                 }
+            }
+            scanner.IsScanning = true;
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                RecreateScanner();
+            }
+        }
+
+        private async Task ShowTicketAsync(string code)
+        {
+            App app = Application.Current as App;
+
+            try
+            {
+                var ret = await app.Api.GetTicketsAsync(code);
+                await Navigation.PushAsync(new TicketView(ret[0]));
+            }
+            catch (Exception ex)
+            {
+                var title = "Error";
+                if (ex.GetType() == typeof(HttpRequestException))
+                {
+                    title = "HTTP Error";
+                }
+
+                await DisplayAlert(title, ex.Message, "OK");
             }
         }
     }
