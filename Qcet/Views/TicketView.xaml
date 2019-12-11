@@ -16,6 +16,34 @@
                 x:Key="ValidateButtonConverter"
                 TrueValue="Ticket validated"
                 FalseValue="Validate"/>
+
+            <Style
+                x:Key="PersonalInfoHeaderStyle"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="EndAndExpand"/>
+                <Setter
+                    Property="TextColor"
+                    Value="White"/>
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold"/>
+            </Style>
+
+            <Style
+                x:Key="PersonalInfoValueStyle"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="CenterAndExpand"/>
+                <Setter
+                    Property="TextColor"
+                    Value="White"/>
+                <Setter
+                    Property="HorizontalTextAlignment"
+                    Value="End"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -73,18 +101,14 @@
                 Grid.Column="0"
                 Grid.Row="2"
                 Text="{Binding Ticket.FormattedPrice}"
-                VerticalOptions="FillAndExpand" 
-                HorizontalOptions="FillAndExpand"
-                TextColor="White"
+                Style="{StaticResource TiledButtonStyle}"
                 FontSize="32"
                 BackgroundColor="{Binding Ticket.IsValid, Converter={StaticResource BCConverter}}"/>
             <Button
                 Grid.Column="0"
                 Grid.Row="3"
                 Text="{Binding Ticket.IsValidated, Converter={StaticResource ValidateButtonConverter}}"
-                VerticalOptions="FillAndExpand" 
-                HorizontalOptions="FillAndExpand"
-                TextColor="White"
+                Style="{StaticResource TiledButtonStyle}"
                 FontSize="32"
                 IsEnabled="{Binding Ticket.IsValidated, Converter={StaticResource BInverter}}"
                 BackgroundColor="{Binding Ticket.IsValidated, Converter={StaticResource BCConverter}}"/>
@@ -97,13 +121,9 @@
                 Padding="10">
                 <Label
                     Text="Name:"
-                    VerticalOptions="EndAndExpand" 
-                    TextColor="White"
-                    FontAttributes="Bold"/>
+                    Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End"
-                    TextColor="White">
+                    Style="{StaticResource PersonalInfoValueStyle}">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span
@@ -116,34 +136,22 @@
                 </Label>
                 <Label
                     Text="Nickname:"
-                    VerticalOptions="EndAndExpand" 
-                    TextColor="White"
-                    FontAttributes="Bold"/>
+                    Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.PrincipalBadge.Nickname}"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End"
-                    TextColor="White"/>
+                    Style="{StaticResource PersonalInfoValueStyle}"/>
                 <Label
                     Text="City:"
-                    VerticalOptions="EndAndExpand" 
-                    TextColor="White"
-                    FontAttributes="Bold"/>
+                    Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.PrincipalBadge.City}"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End"
-                    TextColor="White"/>
+                    Style="{StaticResource PersonalInfoValueStyle}"/>
                 <Label
                     Text="E-mail address:"
-                    VerticalOptions="EndAndExpand" 
-                    TextColor="White"
-                    FontAttributes="Bold"/>
+                    Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.EmailAddress}"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="End"
-                    TextColor="White"/>
+                    Style="{StaticResource PersonalInfoValueStyle}"/>
             </StackLayout>
 
         </Grid>
