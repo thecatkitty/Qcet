@@ -47,7 +47,8 @@ namespace Qcet.Views
             if (e.Item == null)
                 return;
 
-            await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
+            await Navigation.PushAsync(
+                new TicketView(e.Item as FundacjaBT.EventTool.Ticket));
 
             //Deselect Item
             ((ListView)sender).SelectedItem = null;

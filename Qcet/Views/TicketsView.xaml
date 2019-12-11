@@ -7,13 +7,14 @@
     xmlns:q="clr-namespace:Qcet"
     mc:Ignorable="d"
     x:Class="Qcet.Views.TicketsView"
-    Title="List all tickets"
+    Title="Show all tickets"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="True">
     <StackLayout>
 
         <ActivityIndicator
             x:Name="indicator"/>
+        
         <Label
             x:Name="statusLabel"
             Style="{StaticResource CenterLabelStyle}"/>

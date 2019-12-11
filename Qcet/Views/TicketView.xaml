@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:qh="clr-namespace:Qcet.Helpers"
+    mc:Ignorable="d"
+    x:Class="Qcet.Views.TicketView"
+    Title="Ticket details"
+    BackgroundColor="{Binding Ticket.Type.HtmlColor}"
+    NavigationPage.HasNavigationBar="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <qh:BooleanToStringConverter
+                x:Key="ValidateButtonConverter"
+                TrueValue="Ticket validated"
+                FalseValue="Validate"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid
+            Padding="5">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="{Binding Ticket.Code}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                Scale="5"
+                Margin="20,0,20,0">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <OnPlatform.Platforms>
+                            <On Platform="iOS" Value="Courier"/>
+                            <On Platform="Android" Value="monospace"/>
+                            <On Platform="UWP" Value="Consolas"/>
+                            <On Platform="WPF" Value="Consolas"/>
+                        </OnPlatform.Platforms>
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Label
+                Grid.Column="1"
+                Grid.Row="0"
+                Text="{Binding Ticket.DisplayName}"
+                VerticalOptions="EndAndExpand" 
+                FontAttributes="Bold"
+                FontSize="Large"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding Ticket.Type.Name}"
+                VerticalOptions="StartAndExpand"/>
+
+
+            <Button
+                Grid.Column="0"
+                Grid.Row="2"
+                Text="{Binding Ticket.FormattedPrice}"
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand"
+                TextColor="White"
+                FontSize="32"
+                BackgroundColor="{Binding Ticket.IsValid, Converter={StaticResource BCConverter}}"/>
+            <Button
+                Grid.Column="0"
+                Grid.Row="3"
+                Text="{Binding Ticket.IsValidated, Converter={StaticResource ValidateButtonConverter}}"
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand"
+                TextColor="White"
+                FontSize="32"
+                IsEnabled="{Binding Ticket.IsValidated, Converter={StaticResource BInverter}}"
+                BackgroundColor="{Binding Ticket.IsValidated, Converter={StaticResource BCConverter}}"/>
+
+            <StackLayout
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Grid.Row="2"
+                BackgroundColor="Black"
+                Padding="10">
+                <Label
+                    Text="Name:"
+                    VerticalOptions="EndAndExpand" 
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+                <Label
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="End"
+                    TextColor="White">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="{Binding Ticket.PrincipalName.GivenName}"/>
+                            <Span Text=" "/>
+                            <Span
+                                Text="{Binding Ticket.PrincipalName.FamilyName}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    Text="Nickname:"
+                    VerticalOptions="EndAndExpand" 
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+                <Label
+                    Text="{Binding Ticket.PrincipalBadge.Nickname}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="End"
+                    TextColor="White"/>
+                <Label
+                    Text="City:"
+                    VerticalOptions="EndAndExpand" 
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+                <Label
+                    Text="{Binding Ticket.PrincipalBadge.City}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="End"
+                    TextColor="White"/>
+                <Label
+                    Text="E-mail address:"
+                    VerticalOptions="EndAndExpand" 
+                    TextColor="White"
+                    FontAttributes="Bold"/>
+                <Label
+                    Text="{Binding Ticket.EmailAddress}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="End"
+                    TextColor="White"/>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

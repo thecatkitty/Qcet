@@ -68,6 +68,8 @@
 
         <qh:BooleanToColorConverter
             x:Key="BCConverter"/>
+        <qh:BooleanInverter
+            x:Key="BInverter"/>
 
         <DataTemplate
             x:Key="TicketListItemTemplate">
