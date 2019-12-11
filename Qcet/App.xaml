@@ -49,6 +49,18 @@
                 Value="#1B365D" />
         </Style>
 
+        <Style
+            x:Key="TiledButtonStyle"
+            TargetType="Button"
+            BasedOn="{StaticResource ButtonStyle}">
+            <Setter
+                Property="VerticalOptions"
+                Value="FillAndExpand"/>
+            <Setter
+                Property="HorizontalOptions"
+                Value="FillAndExpand"/>
+        </Style>
+
         <Style 
             x:Key="EntryStyle"
             TargetType="Entry">
