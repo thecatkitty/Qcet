@@ -49,7 +49,7 @@
     
     <ContentPage.Content>
         <Grid
-            Padding="5">
+            Padding="5" BackgroundColor="#7F000000">
             
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -111,7 +111,8 @@
                 Style="{StaticResource TiledButtonStyle}"
                 FontSize="32"
                 IsEnabled="{Binding Ticket.IsValidated, Converter={StaticResource BInverter}}"
-                BackgroundColor="{Binding Ticket.IsValidated, Converter={StaticResource BCConverter}}"/>
+                BackgroundColor="{Binding Ticket.IsValidated, Converter={StaticResource BCConverter}}"
+                Clicked="validationButton_Clicked"/>
 
             <StackLayout
                 Grid.RowSpan="2"
@@ -153,6 +154,14 @@
                     Text="{Binding Ticket.EmailAddress}"
                     Style="{StaticResource PersonalInfoValueStyle}"/>
             </StackLayout>
+
+            <ActivityIndicator
+                x:Name="indicator"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="4"
+                BackgroundColor="#00000080"
+                IsRunning="True"
+                IsVisible="False"/>
 
         </Grid>
     </ContentPage.Content>

@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Net.Http;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Qcet.Views
@@ -17,6 +19,27 @@ namespace Qcet.Views
                 Ticket = ticket
             };
             BindingContext = ticketViewModel;
+        }
+
+        private async void validationButton_Clicked(object sender, System.EventArgs e)
+        {
+            try
+            {
+                indicator.IsVisible = true;
+                await ticketViewModel.Validate();
+                indicator.IsVisible = false;
+            }
+            catch (Exception ex)
+            {
+                indicator.IsVisible = false;
+                var title = "Error";
+                if (ex.GetType() == typeof(HttpRequestException))
+                {
+                    title = "HTTP Error";
+                }
+
+                await DisplayAlert(title, ex.Message, "OK");
+            }
         }
     }
 }
