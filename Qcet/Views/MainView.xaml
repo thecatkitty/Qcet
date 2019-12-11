@@ -29,18 +29,20 @@
             Grid.Row="0"
             Text="Welcome to Qcet!" 
             Style="{StaticResource CenterLabelStyle}"
-            FontSize="Header"/>
+            Scale="2.5"/>
 
         <Button
             Grid.Row="1"
             Grid.Column="0"
             Text="Scan and validate"
+            IsEnabled="False"
             Style="{StaticResource TiledButtonStyle}"/>
 
         <Button
             Grid.Row="1"
             Grid.Column="1"
             Text="Display validations"
+            IsEnabled="False"
             Style="{StaticResource TiledButtonStyle}"/>
 
         <Button
@@ -54,6 +56,7 @@
             Grid.Row="2"
             Grid.Column="1"
             Text="Options"
+            IsEnabled="False"
             Style="{StaticResource TiledButtonStyle}"/>
 
         <Label
