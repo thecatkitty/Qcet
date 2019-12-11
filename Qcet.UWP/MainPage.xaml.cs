@@ -21,6 +21,7 @@ namespace Qcet.UWP
         {
             this.InitializeComponent();
 
+            ZXing.Net.Mobile.Forms.WindowsUniversal.ZXingScannerViewRenderer.Init();
             LoadApplication(new Qcet.App());
         }
     }

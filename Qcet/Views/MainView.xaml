@@ -34,21 +34,21 @@
         <Button
             Grid.Row="1"
             Grid.Column="0"
-            Text="Scan and validate"
-            IsEnabled="False"
-            Style="{StaticResource TiledButtonStyle}"/>
+            Text="Scanner"
+            Style="{StaticResource TiledButtonStyle}"
+            Clicked="Scan_Clicked"/>
 
         <Button
             Grid.Row="1"
             Grid.Column="1"
-            Text="Display validations"
+            Text="Queue display"
             IsEnabled="False"
             Style="{StaticResource TiledButtonStyle}"/>
 
         <Button
             Grid.Row="2"
             Grid.Column="0"
-            Text="Show all tickets"
+            Text="Ticket list"
             Style="{StaticResource TiledButtonStyle}"
             Clicked="ShowAll_Clicked"/>
 

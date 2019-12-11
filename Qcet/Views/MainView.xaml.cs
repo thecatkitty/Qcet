@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace Qcet.Views
@@ -28,6 +29,11 @@ namespace Qcet.Views
         private void ShowAll_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TicketsView());
+        }
+
+        private void Scan_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ScannerView());
         }
     }
 }
