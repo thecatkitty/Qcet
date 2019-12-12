@@ -8,7 +8,10 @@
     BackgroundColor="Black">
     <ContentPage.Content>
         <StackLayout>
-            
+
+            <Label
+                Text="Queue display URL (leave empty if no display)"
+                Style="{StaticResource CenterLabelStyle}"/>
             <Entry
                 x:Name="displayUrlEntry"
                 Text="{Binding Source={x:Static q:Settings.DisplayAddress}}"
