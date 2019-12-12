@@ -70,10 +70,17 @@ namespace Qcet.Views
                 await connection;
                 connection.Wait();
 
-                app.DisplayClient = new QueueDisplay.Client(app.Api)
+                if (Settings.DisplayAddress != null)
                 {
-                    Address = new Uri(Settings.DisplayAddress)
-                };
+                    app.DisplayClient = new QueueDisplay.Client(app.Api)
+                    {
+                        Address = new Uri(Settings.DisplayAddress)
+                    };
+                    if (!await app.DisplayClient.Detect())
+                    {
+                        app.DisplayClient = null;
+                    }
+                }
                 Settings.UserName = userNameEntry.Text;
                 await Navigation.PopModalAsync();
             }

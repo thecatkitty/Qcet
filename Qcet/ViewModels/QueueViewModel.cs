@@ -17,9 +17,10 @@ namespace Qcet.ViewModels
             if (app.DisplayServer == null)
             {
                 app.DisplayServer = new QueueDisplay.Server(9000, app.Api);
+                app.DisplayServer.Start();
             }
         }
-
+        
         public void StartReceiving()
         {
             App app = Application.Current as App;

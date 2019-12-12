@@ -21,7 +21,10 @@ namespace Qcet.ViewModels
             Ticket = (await app.Api.GetTicketsAsync(Ticket.Code))[0];
             OnPropertyChanged("Ticket");
 
-            await app.DisplayClient.AddTicketAsync(Ticket);
+            if (app.DisplayClient != null)
+            {
+                await app.DisplayClient.AddTicketAsync(Ticket);
+            }
         }
     }
 }
