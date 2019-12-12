@@ -42,5 +42,10 @@ namespace Qcet.Views
                 Navigation.PushAsync(new ScannerView());
             }
         }
+
+        private void Queue_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new QueueView());
+        }
     }
 }

@@ -42,8 +42,8 @@
             Grid.Row="1"
             Grid.Column="1"
             Text="Queue display"
-            IsEnabled="False"
-            Style="{StaticResource TiledButtonStyle}"/>
+            Style="{StaticResource TiledButtonStyle}"
+            Clicked="Queue_Clicked"/>
 
         <Button
             Grid.Row="2"

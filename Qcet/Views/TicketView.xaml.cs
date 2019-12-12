@@ -21,17 +21,17 @@ namespace Qcet.Views
             BindingContext = ticketViewModel;
         }
 
-        private async void validationButton_Clicked(object sender, System.EventArgs e)
+        private async void validationButton_Clicked(object sender, EventArgs e)
         {
             try
             {
-                indicator.IsVisible = true;
+                indicator.IsRunning = true;
                 await ticketViewModel.Validate();
-                indicator.IsVisible = false;
+                indicator.IsRunning = false;
             }
             catch (Exception ex)
             {
-                indicator.IsVisible = false;
+                indicator.IsRunning = false;
                 var title = "Error";
                 if (ex.GetType() == typeof(HttpRequestException))
                 {

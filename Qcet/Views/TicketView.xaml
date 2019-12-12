@@ -157,11 +157,11 @@
 
             <ActivityIndicator
                 x:Name="indicator"
-                Grid.ColumnSpan="2"
-                Grid.RowSpan="4"
-                BackgroundColor="#00000080"
-                IsRunning="True"
-                IsVisible="False"/>
+                Grid.Column="0"
+                Grid.Row="3"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="False"/>
 
         </Grid>
     </ContentPage.Content>

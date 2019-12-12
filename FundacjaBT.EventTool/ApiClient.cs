@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.Serialization.Json;
 using System.Security.Authentication;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FundacjaBT.EventTool
 {
     public class ApiClient
     {
-        private const string XAuthToken = "X-AUTH-TOKEN";
+        public const string TokenHeader = "X-AUTH-TOKEN";
 
         private readonly HttpClient client = new HttpClient(
             new HttpClientHandler()
@@ -24,7 +24,20 @@ namespace FundacjaBT.EventTool
         public Uri Address { get; set; } = new Uri("http://localhost/");
 
         public bool IsConnected {
-            get => client.DefaultRequestHeaders.Contains(XAuthToken);
+            get => client.DefaultRequestHeaders.Contains(TokenHeader);
+        }
+
+        public string Token {
+            get => client.DefaultRequestHeaders.Contains(TokenHeader)
+                ? client.DefaultRequestHeaders.GetValues(TokenHeader).First()
+                : null;
+            set {
+                if (client.DefaultRequestHeaders.Contains(TokenHeader))
+                {
+                    client.DefaultRequestHeaders.Remove(TokenHeader);
+                }
+                client.DefaultRequestHeaders.Add(TokenHeader, value);
+            }
         }
 
         public ApiClient()
@@ -63,9 +76,7 @@ namespace FundacjaBT.EventTool
                 }
                 throw new HttpRequestException(response.ReasonPhrase);
             }
-            client.DefaultRequestHeaders.Add(
-                XAuthToken,
-                await response.Content.ReadAsStringAsync());
+            Token = await response.Content.ReadAsStringAsync();
         }
 
         public async Task Disconnect()
@@ -76,7 +87,7 @@ namespace FundacjaBT.EventTool
             {
                 throw new HttpRequestException(response.ReasonPhrase);
             }
-            client.DefaultRequestHeaders.Remove("X-AUTH-TOKEN");
+            client.DefaultRequestHeaders.Remove(TokenHeader);
         }
 
         public async Task<Event> GetEventAsync()
