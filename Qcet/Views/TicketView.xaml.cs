@@ -25,13 +25,16 @@ namespace Qcet.Views
         {
             try
             {
+                (sender as Button).IsVisible = false;
                 indicator.IsRunning = true;
                 await ticketViewModel.Validate();
                 indicator.IsRunning = false;
+                (sender as Button).IsVisible = true;
             }
             catch (Exception ex)
             {
                 indicator.IsRunning = false;
+                (sender as Button).IsVisible = true;
                 var title = "Error";
                 if (ex.GetType() == typeof(HttpRequestException))
                 {

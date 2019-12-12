@@ -159,9 +159,8 @@
                 x:Name="indicator"
                 Grid.Column="0"
                 Grid.Row="3"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"
-                IsRunning="False"/>
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"/>
 
         </Grid>
     </ContentPage.Content>
