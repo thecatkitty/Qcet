@@ -14,7 +14,8 @@
             ItemsSource="{Binding Tickets}"
             CachingStrategy="RecycleElementAndDataTemplate"
             ItemTemplate="{StaticResource TicketListItemTemplate}"
-            Margin="10"/>
+            Margin="10"
+            ItemTapped="ListView_ItemTapped"/>
         
     </StackLayout>
 </ContentPage>

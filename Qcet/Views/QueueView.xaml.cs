@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using FundacjaBT.EventTool;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Qcet.Views
@@ -26,6 +27,17 @@ namespace Qcet.Views
         {
             base.OnDisappearing();
             queueViewModel.StopReceiving();
+        }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (await DisplayAlert(
+                "Confirmation",
+                "Press OK if you've finished your activity related to this attendant.",
+                "OK", "Cancel"))
+            {
+                queueViewModel.Tickets.Remove(e.Item as Ticket);
+            }
         }
     }
 }
