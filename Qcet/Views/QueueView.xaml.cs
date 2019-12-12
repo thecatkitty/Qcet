@@ -1,4 +1,5 @@
 ﻿using FundacjaBT.EventTool;
+using Plugin.SimpleAudioPlayer;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +9,7 @@ namespace Qcet.Views
     public partial class QueueView : ContentPage
     {
         ViewModels.QueueViewModel queueViewModel;
+        private ISimpleAudioPlayer newTicketSound;
 
         public QueueView()
         {
@@ -15,6 +17,10 @@ namespace Qcet.Views
 
             queueViewModel = new ViewModels.QueueViewModel();
             BindingContext = queueViewModel;
+            
+            newTicketSound = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            newTicketSound.Load(
+                GetType().Assembly.GetManifestResourceStream("Qcet.Media.NewTicket.mp3"));
         }
 
         protected override void OnAppearing()
@@ -38,6 +44,11 @@ namespace Qcet.Views
             {
                 queueViewModel.Tickets.Remove(e.Item as Ticket);
             }
+        }
+
+        private void ListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            newTicketSound.Play();
         }
     }
 }

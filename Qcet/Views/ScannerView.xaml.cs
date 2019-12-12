@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.SimpleAudioPlayer;
+using System;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -11,9 +12,23 @@ namespace Qcet.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScannerView : ContentPage
     {
+        private static ISimpleAudioPlayer validSound;
+        private static ISimpleAudioPlayer invalidSound;
+
         public ScannerView()
         {
             InitializeComponent();
+
+            if (validSound == null)
+            {
+                validSound = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+                validSound.Load(
+                    GetType().Assembly.GetManifestResourceStream("Qcet.Media.Valid.mp3"));
+
+                invalidSound = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+                invalidSound.Load(
+                    GetType().Assembly.GetManifestResourceStream("Qcet.Media.Invalid.mp3"));
+            }
         }
 
         private void RecreateScanner()
@@ -85,6 +100,16 @@ namespace Qcet.Views
             try
             {
                 var ret = await app.Api.GetTicketsAsync(code);
+
+                if (ret[0].IsValid)
+                {
+                    validSound.Play();
+                }
+                else
+                {
+                    invalidSound.Play();
+                }
+
                 await page.Navigation.PushAsync(new TicketView(ret[0]));
             }
             catch (Exception ex)

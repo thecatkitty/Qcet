@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Media\Invalid.mp3" />
+    <None Remove="Media\NewTicket.mp3" />
+    <None Remove="Media\Valid.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Media\Invalid.mp3" />
+    <EmbeddedResource Include="Media\NewTicket.mp3" />
+    <EmbeddedResource Include="Media\Valid.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.3.0.991221" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />

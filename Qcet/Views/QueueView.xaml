@@ -15,7 +15,8 @@
             CachingStrategy="RecycleElementAndDataTemplate"
             ItemTemplate="{StaticResource TicketListItemTemplate}"
             Margin="10"
-            ItemTapped="ListView_ItemTapped"/>
+            ItemTapped="ListView_ItemTapped"
+            ItemAppearing="ListView_ItemAppearing"/>
         
     </StackLayout>
 </ContentPage>
