@@ -29,6 +29,19 @@ namespace Qcet.QueueDisplay
                 api.Token);
         }
 
+        public async Task<bool> Detect()
+        {
+            try
+            {
+                var response = await client.GetAsync(Address + "displayDetect");
+                return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task AddTicketAsync(Ticket ticket)
         {
             var response = await client.GetAsync(Address + ticket.Code);

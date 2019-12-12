@@ -47,6 +47,10 @@ namespace Qcet.QueueDisplay
                 {
                     response.StatusCode = (int)HttpStatusCode.Forbidden;
                 }
+                else if (request.RawUrl == "/displayDetect")
+                {
+                    response.StatusCode = (int)HttpStatusCode.NoContent;
+                }
                 else
                 {
                     ProcessRequestAsync(request, response).Wait();
