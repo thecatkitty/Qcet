@@ -47,5 +47,10 @@ namespace Qcet.Views
         {
             Navigation.PushAsync(new QueueView());
         }
+
+        private void Options_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OptionsView());
+        }
     }
 }

@@ -9,7 +9,7 @@
         }
 
         public static string DisplayAddress {
-            get => Helpers.SettingsStorage.Get("http://localhost:9000/");
+            get => Helpers.SettingsStorage.Get<string>(null);
             set => Helpers.SettingsStorage.Set(value);
         }
 
