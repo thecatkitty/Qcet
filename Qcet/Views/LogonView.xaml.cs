@@ -32,7 +32,7 @@ namespace Qcet.Views
 
         private void UrlBase_Unfocused(object sender, FocusEventArgs e)
         {
-            Settings.UrlBase = (sender as Entry).Text;
+            Settings.ApiAddress = (sender as Entry).Text;
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
@@ -56,7 +56,7 @@ namespace Qcet.Views
             {
                 app.Api = new ApiClient
                 {
-                    Address = new Uri(Settings.UrlBase)
+                    Address = new Uri(Settings.ApiAddress)
                 };
 
                 statusLabel.Text = $"Connecting to {app.Api.Address.DnsSafeHost}...";
@@ -69,6 +69,11 @@ namespace Qcet.Views
 
                 await connection;
                 connection.Wait();
+
+                app.DisplayClient = new QueueDisplay.Client(app.Api)
+                {
+                    Address = new Uri(Settings.DisplayAddress)
+                };
                 Settings.UserName = userNameEntry.Text;
                 await Navigation.PopModalAsync();
             }

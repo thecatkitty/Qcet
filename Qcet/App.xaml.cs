@@ -1,12 +1,12 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 
 namespace Qcet
 {
     public partial class App : Application
     {
         public FundacjaBT.EventTool.ApiClient Api { get; set; }
+        public QueueDisplay.Client DisplayClient { get; set; }
+        public QueueDisplay.Server DisplayServer { get; set; }
 
         public App()
         {

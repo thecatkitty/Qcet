@@ -2,9 +2,14 @@
 {
     public static class Settings
     {
-        public static string UrlBase
+        public static string ApiAddress
         {
             get => Helpers.SettingsStorage.Get("http://localhost:8000/");
+            set => Helpers.SettingsStorage.Set(value);
+        }
+
+        public static string DisplayAddress {
+            get => Helpers.SettingsStorage.Get("http://localhost:9000/");
             set => Helpers.SettingsStorage.Set(value);
         }
 

@@ -19,13 +19,13 @@ namespace Qcet.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            queueViewModel.Server.Start();
+            queueViewModel.StartReceiving();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            queueViewModel.Server.Stop();
+            queueViewModel.StopReceiving();
         }
     }
 }

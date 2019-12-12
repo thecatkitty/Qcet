@@ -18,7 +18,7 @@
                 Text="Please log on into Your event-tool server." 
                 Style="{StaticResource CenterLabelStyle}"/>
             <Entry
-                Text="{Binding Source={x:Static q:Settings.UrlBase}}"
+                Text="{Binding Source={x:Static q:Settings.ApiAddress}}"
                 Placeholder="event-tool server URL"
                 Style="{StaticResource EntryStyle}"
                 Unfocused="UrlBase_Unfocused"/>
