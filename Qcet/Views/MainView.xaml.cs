@@ -33,7 +33,14 @@ namespace Qcet.Views
 
         private void Scan_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ScannerView());
+            if (Device.RuntimePlatform == Device.WPF)
+            {
+                Navigation.PushAsync(new ManualInputView());
+            }
+            else
+            {
+                Navigation.PushAsync(new ScannerView());
+            }
         }
     }
 }

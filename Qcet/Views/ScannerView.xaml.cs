@@ -52,7 +52,7 @@ namespace Qcet.Views
         {
             if ((codeEntry?.Text ?? "") != "")
             {
-                await ShowTicketAsync(codeEntry.Text);
+                await ShowTicketAsync(this, codeEntry.Text);
             }
         }
 
@@ -66,7 +66,7 @@ namespace Qcet.Views
                 {
 
                     indicator.IsRunning = true;
-                    await ShowTicketAsync(match.Groups["code"].Value);
+                    await ShowTicketAsync(this, match.Groups["code"].Value);
                     indicator.IsRunning = false;
                 }
             }
@@ -78,14 +78,14 @@ namespace Qcet.Views
             }
         }
 
-        private async Task ShowTicketAsync(string code)
+        public static async Task ShowTicketAsync(Page page, string code)
         {
             App app = Application.Current as App;
 
             try
             {
                 var ret = await app.Api.GetTicketsAsync(code);
-                await Navigation.PushAsync(new TicketView(ret[0]));
+                await page.Navigation.PushAsync(new TicketView(ret[0]));
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace Qcet.Views
                     title = "HTTP Error";
                 }
 
-                await DisplayAlert(title, ex.Message, "OK");
+                await page.DisplayAlert(title, ex.Message, "OK");
             }
         }
     }
