@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Net;
 using System.Text.RegularExpressions;
-using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace Qcet.QueueDisplay
 {
@@ -49,8 +49,9 @@ namespace Qcet.QueueDisplay
                 }
                 else
                 {
-                    ProcessRequestAsync(request, response);
+                    ProcessRequestAsync(request, response).Wait();
                 }
+                response.Close();
             }
             listener.Stop();
         }
@@ -65,7 +66,7 @@ namespace Qcet.QueueDisplay
             worker.CancelAsync();
         }
 
-        private async void ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
+        private async Task ProcessRequestAsync(HttpListenerRequest request, HttpListenerResponse response)
         {
             Match match = Regex.Match(request.RawUrl, @"^/(?<code>[0-9a-fA-F]+)$");
             if (match.Success)
@@ -77,8 +78,9 @@ namespace Qcet.QueueDisplay
                         Address = apiAddress,
                         Token = request.Headers.Get(ApiClient.TokenHeader)
                     };
-                    OnReceived((await api.GetTicketsAsync(match.Groups["code"].Value))[0]);
+                    var data = await api.GetTicketsAsync(match.Groups["code"].Value);
                     response.StatusCode = (int)HttpStatusCode.OK;
+                    OnReceived(data[0]);
                 }
                 catch (Exception)
                 {
