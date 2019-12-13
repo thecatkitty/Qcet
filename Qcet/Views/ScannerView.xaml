@@ -7,7 +7,7 @@
     xmlns:zxf="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
     mc:Ignorable="d"
     x:Class="Qcet.Views.ScannerView"
-    Title="Scan code">
+    Title="Skanowanie kodów">
     <Grid
         x:Name="grid">
         <Grid.RowDefinitions>
@@ -36,14 +36,14 @@
         <Entry
             x:Name="codeEntry"
             Grid.Row="2"
-            Placeholder="Manual code"
+            Placeholder="Kod wprowadzony ręcznie"
             Style="{StaticResource EntryStyle}"
             HorizontalTextAlignment="Center"/>
 
         <Button
             Grid.Column="1"
             Grid.Row="2"
-            Text="Enter"
+            Text="Zatwierdź"
             VerticalOptions="CenterAndExpand"
             HorizontalOptions="FillAndExpand"
             Clicked="manual_Clicked"/>

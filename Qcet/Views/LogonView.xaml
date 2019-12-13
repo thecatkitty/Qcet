@@ -6,7 +6,7 @@
              xmlns:q="clr-namespace:Qcet"
              mc:Ignorable="d"
              x:Class="Qcet.Views.LogonView"
-             Title="Log on"
+             Title="Logowanie"
              BackgroundColor="Black"
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
@@ -15,7 +15,7 @@
             Margin="0,5,0,5"
             Padding="5">
             <Label
-                Text="Please log on into Your event-tool server." 
+                Text="Proszę zalogować się do serwera event-tool." 
                 Style="{StaticResource CenterLabelStyle}"/>
             <Entry
                 Text="{Binding Source={x:Static q:Settings.ApiAddress}}"
@@ -25,19 +25,19 @@
             <Entry
                 x:Name="userNameEntry"
                 Text="{Binding Source={x:Static q:Settings.UserName}}"
-                Placeholder="User name"
+                Placeholder="Nazwa użytkownika"
                 Style="{StaticResource EntryStyle}"
                 TextChanged="Entry_TextChanged"/>
             <Entry
                 x:Name="passwordEntry"
-                Placeholder="Password"
+                Placeholder="Hasło"
                 Style="{StaticResource EntryStyle}"
                 IsPassword="True"
                 TextChanged="Entry_TextChanged"
                 Focused="passwordEntry_Focused"/>
             <Button
                 x:Name="loginButton"
-                Text="Log in"
+                Text="Zaloguj"
                 Style="{StaticResource ButtonStyle}"
                 IsEnabled="False"
                 WidthRequest="200"

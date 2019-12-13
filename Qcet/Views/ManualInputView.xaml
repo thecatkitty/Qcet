@@ -6,21 +6,21 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Class="Qcet.Views.ManualInputView"
-    Title="Enter ticket number"
+    Title="Wprowadzanie numer biletu"
     BackgroundColor="Black">
     <ContentPage.Content>
         <StackLayout>
 
             <Entry
                 x:Name="codeEntry"
-                Placeholder="Manual code"
+                Placeholder="Kid wpisany ręcznie"
                 Style="{StaticResource EntryStyle}"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
                 Completed="Button_Clicked"/>
 
             <Button
-                Text="Enter"
+                Text="Zatwierdź"
                 Style="{StaticResource ButtonStyle}"
                 Clicked="Button_Clicked"/>
 

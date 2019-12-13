@@ -7,14 +7,14 @@
     xmlns:q="clr-namespace:Qcet"
     mc:Ignorable="d"
     x:Class="Qcet.Views.TicketsView"
-    Title="Show all tickets"
+    Title="Wyświetlanie listy biletów"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="True">
     <StackLayout>
 
         <Entry
             x:Name="searchEntry"
-            Placeholder="Search..."
+            Placeholder="Szukaj..."
             Style="{StaticResource EntryStyle}"
             HorizontalOptions="FillAndExpand"
             Margin="0,0,0,5"
@@ -35,7 +35,7 @@
             Margin="10"/>
 
         <Label
-            Text="{Binding Tickets.Count, StringFormat='Found {0} ticket(s) in the database'}"
+            Text="{Binding Tickets.Count, StringFormat='Znaleziono {0} bilet(y/ów) w bazie'}"
             Style="{StaticResource CenterLabelStyle}"/>
         
     </StackLayout>

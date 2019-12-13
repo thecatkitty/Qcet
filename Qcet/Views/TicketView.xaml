@@ -4,18 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:qh="clr-namespace:Qcet.Helpers"
+    xmlns:qh="clr-namespace:Qcet.Helpers"
     mc:Ignorable="d"
     x:Class="Qcet.Views.TicketView"
-    Title="Ticket details"
+    Title="Szczegóły biletu"
     BackgroundColor="{Binding Ticket.Type.HtmlColor}"
     NavigationPage.HasNavigationBar="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <qh:BooleanToStringConverter
                 x:Key="ValidateButtonConverter"
-                TrueValue="Ticket validated"
-                FalseValue="Validate"/>
+                TrueValue="Potwierdzono"
+                FalseValue="Potwierdź"/>
 
             <Style
                 x:Key="PersonalInfoHeaderStyle"
@@ -121,7 +121,7 @@
                 BackgroundColor="Black"
                 Padding="10">
                 <Label
-                    Text="Name:"
+                    Text="Imię i nazwisko:"
                     Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Style="{StaticResource PersonalInfoValueStyle}">
@@ -136,19 +136,19 @@
                     </Label.FormattedText>
                 </Label>
                 <Label
-                    Text="Nickname:"
+                    Text="Pseudonim:"
                     Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.PrincipalBadge.Nickname}"
                     Style="{StaticResource PersonalInfoValueStyle}"/>
                 <Label
-                    Text="City:"
+                    Text="Miasto:"
                     Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.PrincipalBadge.City}"
                     Style="{StaticResource PersonalInfoValueStyle}"/>
                 <Label
-                    Text="E-mail address:"
+                    Text="Adres e-mail:"
                     Style="{StaticResource PersonalInfoHeaderStyle}"/>
                 <Label
                     Text="{Binding Ticket.EmailAddress}"
